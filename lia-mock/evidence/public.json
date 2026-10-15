@@ -1,0 +1,192 @@
+{
+  "knownKeys": [
+    "CPF_AUTOR",
+    "DATA_BO",
+    "DATA_DISTRIBUICAO",
+    "DATA_FATO",
+    "DESCRICAO_LIMINAR",
+    "HOUVE_VITIMA",
+    "KM_RODOVIA",
+    "NEGATIVACAO",
+    "NOME_AUTOR",
+    "NOME_CURSO",
+    "NOME_RODOVIA",
+    "NUMERO_BO",
+    "NUMERO_MATRICULA",
+    "NUMERO_PROCESSO",
+    "ORGAO_NEGATIVACAO",
+    "PEDIDO_LIMINAR",
+    "PLACA_VEICULO",
+    "TIPO_ACAO",
+    "TIPO_LESAO",
+    "TIPO_OCORRENCIA",
+    "VALOR_CAUSA",
+    "VALOR_DANO_MORAL"
+  ],
+  "entries": [
+    {
+      "doc": "processo-curto",
+      "key": "NUMERO_PROCESSO",
+      "match": "Processo nº 1012345-67.2025.8.26.0114",
+      "answer": "1012345-67.2025.8.26.0114"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "DATA_DISTRIBUICAO",
+      "match": "Distribuído em 12/03/2025",
+      "answer": "12/03/2025"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "NOME_AUTOR",
+      "match": "MARIANA COSTA RIBEIRO, brasileira",
+      "answer": "  Mariana Costa Ribeiro "
+    },
+    {
+      "doc": "processo-curto",
+      "key": "CPF_AUTOR",
+      "match": "CPF sob o nº 123.456.789-09",
+      "answer": "123.456.789-09"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "TIPO_ACAO",
+      "match": "AÇÃO DE INDENIZAÇÃO POR DANOS MORAIS",
+      "answer": "INDENIZACAO POR DANOS MORAIS"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "NOME_CURSO",
+      "match": "curso de Administração de Empresas",
+      "answer": "Administração de Empresas"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "NUMERO_MATRICULA",
+      "match": "matrícula nº 2021004587",
+      "answer": "2021004587"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "NEGATIVACAO",
+      "match": "teve seu nome inscrito no cadastro",
+      "answer": "SIM"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "ORGAO_NEGATIVACAO",
+      "match": "cadastro da Serasa Experian",
+      "answer": "serasa experian"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "PEDIDO_LIMINAR",
+      "match": "requer a concessão de tutela de urgência",
+      "answer": "sim"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "DESCRICAO_LIMINAR",
+      "match": "exclusão imediata do nome da autora dos cadastros de inadimplentes",
+      "answer": "Exclusão imediata do nome da autora dos cadastros de inadimplentes"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "VALOR_DANO_MORAL",
+      "match": "danos morais no montante de R$ 15.000,00",
+      "answer": "R$ 15.000,00"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "VALOR_CAUSA",
+      "match": "R$ 19.870,00",
+      "answer": "R$ 19.870,00"
+    },
+    {
+      "doc": "processo-curto",
+      "key": "OBSERVACOES",
+      "match": "Termos em que pede deferimento",
+      "answer": "Petição com pedido de gratuidade",
+      "extra": true
+    },
+    {
+      "doc": "processo-longo",
+      "key": "NUMERO_PROCESSO",
+      "match": "5004321-10.2025.8.21.0001",
+      "answer": "5004321-10.2025.8.21.0001"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "NOME_AUTOR",
+      "match": "CARLOS EDUARDO NUNES",
+      "answer": "Carlos Eduardo Nunes"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "COMARCA_ORIGEM",
+      "match": "COMARCA DE PORTO ALEGRE",
+      "answer": "Porto Alegre",
+      "extra": true
+    },
+    {
+      "doc": "processo-longo",
+      "key": "DATA_FATO",
+      "match": "22/01/2025, por volta das 19h40",
+      "answer": "22/01/2025"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "NOME_RODOVIA",
+      "match": "rodovia BR-116",
+      "answer": "BR-116"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "KM_RODOVIA",
+      "match": "km 245",
+      "answer": "km 245"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "TIPO_OCORRENCIA",
+      "match": "grave acidente de trânsito",
+      "answer": "ACIDENTE DE TRANSITO"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "PLACA_VEICULO",
+      "match": "placa ABC1D23",
+      "answer": "ABC1D23"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "HOUVE_VITIMA",
+      "match": "socorrido pelo serviço de resgate",
+      "answer": "Sim"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "TIPO_LESAO",
+      "match": "lesão corporal grave",
+      "answer": "LESAO GRAVE"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "NUMERO_BO",
+      "match": "2025/000987",
+      "answer": "2025/000987"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "DATA_BO",
+      "match": "Federal em 23/01/2025",
+      "answer": "23/01/2025"
+    },
+    {
+      "doc": "processo-longo",
+      "key": "VALOR_CAUSA",
+      "match": "R$ 250.000,00",
+      "answer": "R$ 250.000,00"
+    }
+  ]
+}

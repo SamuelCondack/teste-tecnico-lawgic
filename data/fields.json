@@ -1,0 +1,101 @@
+[
+  { "companyKey": "acme-edu", "order": 1, "key": "NUMERO_PROCESSO", "label": "Número do processo", "type": "text", "required": true },
+  { "companyKey": "acme-edu", "order": 2, "key": "DATA_DISTRIBUICAO", "label": "Data de distribuição", "type": "date", "required": false },
+  { "companyKey": "acme-edu", "order": 3, "key": "NOME_AUTOR", "label": "Nome do autor", "type": "text", "required": true },
+  { "companyKey": "acme-edu", "order": 4, "key": "CPF_AUTOR", "label": "CPF do autor", "type": "text", "required": false },
+  {
+    "companyKey": "acme-edu", "order": 5, "key": "TIPO_ACAO", "label": "Tipo de ação", "type": "select", "required": true,
+    "options": [
+      { "value": "DANOS_MORAIS", "label": "Indenização por Danos Morais" },
+      { "value": "COBRANCA_INDEVIDA", "label": "Cobrança Indevida" },
+      { "value": "DIPLOMA", "label": "Entrega de Diploma" }
+    ]
+  },
+  {
+    "companyKey": "acme-edu", "order": 6, "key": "NOME_CURSO", "label": "Curso", "type": "text", "required": false,
+    "attached": [{ "key": "TIPO_ACAO", "values": ["COBRANCA_INDEVIDA", "DIPLOMA"] }]
+  },
+  {
+    "companyKey": "acme-edu", "order": 7, "key": "NUMERO_MATRICULA", "label": "Matrícula", "type": "text", "required": false,
+    "attached": [{ "key": "TIPO_ACAO", "values": ["COBRANCA_INDEVIDA", "DIPLOMA"] }]
+  },
+  {
+    "companyKey": "acme-edu", "order": 8, "key": "NEGATIVACAO", "label": "Houve negativação?", "type": "select", "required": false,
+    "options": [
+      { "value": "S", "label": "Sim" },
+      { "value": "N", "label": "Não" }
+    ]
+  },
+  {
+    "companyKey": "acme-edu", "order": 9, "key": "ORGAO_NEGATIVACAO", "label": "Órgão de proteção ao crédito", "type": "select", "required": false,
+    "options": [
+      { "value": "SERASA", "label": "Serasa Experian" },
+      { "value": "SPC", "label": "SPC Brasil" },
+      { "value": "BOA_VISTA", "label": "Boa Vista SCPC" }
+    ],
+    "attached": [{ "key": "NEGATIVACAO", "values": ["S"] }]
+  },
+  {
+    "companyKey": "acme-edu", "order": 10, "key": "PEDIDO_LIMINAR", "label": "Há pedido liminar?", "type": "select", "required": false,
+    "options": [
+      { "value": "S", "label": "Sim" },
+      { "value": "N", "label": "Não" }
+    ]
+  },
+  {
+    "companyKey": "acme-edu", "order": 11, "key": "DESCRICAO_LIMINAR", "label": "O que a liminar pede", "type": "text", "required": true,
+    "attached": [{ "key": "PEDIDO_LIMINAR", "values": ["S"] }]
+  },
+  {
+    "companyKey": "acme-edu", "order": 12, "key": "VALOR_DANO_MORAL", "label": "Valor pedido de dano moral", "type": "text", "required": false,
+    "attached": [
+      { "key": "TIPO_ACAO", "values": ["DANOS_MORAIS", "COBRANCA_INDEVIDA"] },
+      { "key": "NEGATIVACAO", "values": ["S"] }
+    ]
+  },
+  { "companyKey": "acme-edu", "order": 13, "key": "VALOR_CAUSA", "label": "Valor da causa", "type": "text", "required": true },
+
+  { "companyKey": "rodovia-sul", "order": 1, "key": "NUMERO_PROCESSO", "label": "Número do processo", "type": "text", "required": true },
+  { "companyKey": "rodovia-sul", "order": 2, "key": "NOME_AUTOR", "label": "Nome do autor", "type": "text", "required": true },
+  {
+    "companyKey": "rodovia-sul", "order": 3, "key": "TIPO_OCORRENCIA", "label": "Tipo de ocorrência", "type": "select", "required": true,
+    "options": [
+      { "value": "ACIDENTE", "label": "Acidente de Trânsito" },
+      { "value": "BURACO", "label": "Buraco na Pista" },
+      { "value": "PEDAGIO", "label": "Cobrança de Pedágio" }
+    ]
+  },
+  { "companyKey": "rodovia-sul", "order": 4, "key": "DATA_FATO", "label": "Data do fato", "type": "date", "required": true },
+  { "companyKey": "rodovia-sul", "order": 5, "key": "NOME_RODOVIA", "label": "Rodovia", "type": "text", "required": true },
+  {
+    "companyKey": "rodovia-sul", "order": 6, "key": "KM_RODOVIA", "label": "Quilômetro", "type": "text", "required": false,
+    "attached": [{ "key": "TIPO_OCORRENCIA", "values": ["ACIDENTE", "BURACO"] }]
+  },
+  {
+    "companyKey": "rodovia-sul", "order": 7, "key": "PLACA_VEICULO", "label": "Placa do veículo", "type": "text", "required": false,
+    "attached": [{ "key": "TIPO_OCORRENCIA", "values": ["ACIDENTE", "BURACO"] }]
+  },
+  {
+    "companyKey": "rodovia-sul", "order": 8, "key": "HOUVE_VITIMA", "label": "Houve vítima?", "type": "select", "required": false,
+    "options": [
+      { "value": "S", "label": "Sim" },
+      { "value": "N", "label": "Não" }
+    ],
+    "attached": [{ "key": "TIPO_OCORRENCIA", "values": ["ACIDENTE"] }]
+  },
+  {
+    "companyKey": "rodovia-sul", "order": 9, "key": "TIPO_LESAO", "label": "Tipo de lesão", "type": "select", "required": false,
+    "options": [
+      { "value": "LEVE", "label": "Lesão Leve" },
+      { "value": "GRAVE", "label": "Lesão Grave" },
+      { "value": "OBITO", "label": "Óbito" }
+    ],
+    "attached": [
+      { "key": "TIPO_OCORRENCIA", "values": ["ACIDENTE"] },
+      { "key": "HOUVE_VITIMA", "values": ["S"] }
+    ]
+  },
+  { "companyKey": "rodovia-sul", "order": 10, "key": "NUMERO_BO", "label": "Número do boletim de ocorrência", "type": "text", "required": false },
+  { "companyKey": "rodovia-sul", "order": 11, "key": "DATA_BO", "label": "Data do boletim de ocorrência", "type": "date", "required": false },
+  { "companyKey": "rodovia-sul", "order": 12, "key": "VALOR_CAUSA", "label": "Valor da causa", "type": "text", "required": true }
+]

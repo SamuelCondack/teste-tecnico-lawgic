@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      retries: 10
+
+  # Mock da IA. Não altere este serviço: na correção ele é substituído pela nossa cópia.
+  lia-mock:
+    build: ./lia-mock
+    ports:
+      - "4010:4010"
+    environment:
+      MOCK_DEBUG: "0" # "1" inclui `debug.missingEvidence` nas respostas do /v1/chat
+
+  # Adicione aqui o serviço da sua API, por exemplo:
+  #
+  # api:
+  #   build: .
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     MONGO_URI: mongodb://mongo:27017/mini-lia
+  #     LIA_BASE_URL: http://lia-mock:4010
+  #   depends_on:
+  #     mongo:
+  #       condition: service_healthy
+  #     lia-mock:
+  #       condition: service_started

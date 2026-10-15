@@ -1,0 +1,132 @@
+{
+  "info": {
+    "name": "LIA Mock",
+    "description": "Exemplos de chamada ao LIA Mock, a IA do teste técnico (porta 4010). Suba o mock com `docker compose up -d lia-mock`.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "mockUrl",
+      "value": "http://localhost:4010"
+    }
+  ],
+  "item": [
+    {
+      "name": "Chat: extrair campos (com debug)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-mock-debug",
+            "value": "1"
+          }
+        ],
+        "url": "{{mockUrl}}/v1/chat",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Retorne o valor dos campos NUMERO_PROCESSO, NOME_AUTOR, TIPO_ACAO e VALOR_CAUSA.\\n\\nDocumento:\\nProcesso nº 1012345-67.2025.8.26.0114 — Distribuído em 12/03/2025\\nMARIANA COSTA RIBEIRO, brasileira, solteira, estudante... propor a presente AÇÃO DE INDENIZAÇÃO POR DANOS MORAIS em face de ACME EDUCAÇÃO S.A.\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Chat: prompt sem as keys (resposta vazia)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{mockUrl}}/v1/chat",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"messages\": [\n    { \"role\": \"user\", \"content\": \"Qual o número do processo? Processo nº 1012345-67.2025.8.26.0114\" }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Chat: prompt grande demais (413)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{mockUrl}}/v1/chat",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"messages\": [{ \"role\": \"user\", \"content\": \"{{bigText}}\" }]\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.variables.set('bigText', 'x'.repeat(17000))"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('413', () => pm.response.to.have.status(413))"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Embeddings",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{mockUrl}}/v1/embeddings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"inputs\": [\n    \"dá-se à causa o valor\",\n    \"Dá-se à causa o valor de R$ 250.000,00 (duzentos e cinquenta mil reais).\",\n    \"O autor foi socorrido pelo serviço de resgate da concessionária.\"\n  ]\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const { vectors } = pm.response.json()",
+              "const cosine = (a, b) => {",
+              "  const dot = a.reduce((sum, v, i) => sum + v * b[i], 0)",
+              "  const norm = v => Math.sqrt(v.reduce((sum, x) => sum + x * x, 0))",
+              "  return dot / (norm(a) * norm(b))",
+              "}",
+              "console.log('frase x valor da causa:', cosine(vectors[0], vectors[1]).toFixed(3))",
+              "console.log('frase x resgate:', cosine(vectors[0], vectors[2]).toFixed(3))",
+              "pm.test('o trecho do valor da causa é o mais parecido com a frase', () => {",
+              "  pm.expect(cosine(vectors[0], vectors[1])).to.be.above(cosine(vectors[0], vectors[2]))",
+              "})"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{mockUrl}}/health"
+      }
+    }
+  ]
+}

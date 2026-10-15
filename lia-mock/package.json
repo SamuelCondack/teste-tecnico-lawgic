@@ -1,0 +1,13 @@
+{
+  "name": "lia-mock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mock da API de IA (LIA) usada no teste técnico. Sem dependências.",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

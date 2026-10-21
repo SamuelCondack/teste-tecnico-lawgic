@@ -92,3 +92,5 @@ npm run test:delivery
 ```
 
 O e2e confere os dois PDFs. O `test:delivery` replica o boot da entrega: `node src/seed.js && node src/index.js` em processos separados, como o `docker compose up`.
+
+No GitHub Actions, o mesmo `docker compose up --build` sobe o stack e confere o contrato HTTP.

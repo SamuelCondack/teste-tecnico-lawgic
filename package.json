@@ -15,7 +15,8 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "node --test src/lib src/services",
     "test:e2e": "node scripts/e2e.js",
-    "test:delivery": "node scripts/verify-delivery.js"
+    "test:delivery": "node scripts/verify-delivery.js",
+    "test:http": "node scripts/assert-http-contract.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
